@@ -10,6 +10,7 @@ from typing import List, Optional
 
 class UpsertRequest(BaseModel):
     documents: List[Document]
+    chunk_token_size: Optional[int]
 
 
 class UpsertResponse(BaseModel):

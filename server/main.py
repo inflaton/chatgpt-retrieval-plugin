@@ -70,7 +70,7 @@ async def upsert(
     request: UpsertRequest = Body(...),
 ):
     try:
-        ids = await datastore.upsert(request.documents)
+        ids = await datastore.upsert(request.documents, request.chunk_token_size)
         return UpsertResponse(ids=ids)
     except Exception as e:
         print("Error:", e)
