@@ -65,6 +65,8 @@ class PineconeDataStore(DataStore):
             except Exception as e:
                 print(f"Error connecting to index {PINECONE_INDEX}: {e}")
                 raise e
+            
+        print(pinecone.describe_index(PINECONE_INDEX))
 
     @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(3))
     async def _upsert(self, chunks: Dict[str, List[DocumentChunk]]) -> List[str]:
